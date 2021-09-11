@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PaymentBillingDetails from "../index";
 import { updatePaymentBillingDetails, updatePaymentBillingDetailsKey } from "../store/actions";
+import PaymentDetailsContext from "../context/PaymentDetailsContext";
 
 const mapDispatchToProps = (dispatch) => ({
   updatePaymentBillingDetails: (data) => dispatch(updatePaymentBillingDetails(data)),
@@ -10,11 +11,21 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  paymentBillingDetails: state.paymentBillingDetails,
+    paymentDetails: state.paymentBillingDetails.paymentDetails,
 });
 
 function PaymentBillingDetailsContainer(props) {
-  return <PaymentBillingDetails {...props} />;
+  return (
+    <PaymentDetailsContext.Provider
+      value={{
+        paymentDetails: props.paymentDetails,
+        updatePaymentBillingDetails: props.updatePaymentBillingDetails,
+        updatePaymentBillingDetailsKey: props.updatePaymentBillingDetailsKey,
+      }}
+    >
+      <PaymentBillingDetails />
+    </PaymentDetailsContext.Provider>
+  );
 }
 
 export default React.memo(
