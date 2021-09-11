@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../../../../../../../commons/components/form/Button";
-import Input from "../../../../../../../../commons/components/form/Input/Input";
+import Input from "../../../../../../../../commons/components/form/Input";
 import Label from "../../../../../../../../commons/components/form/Label";
 import { StyledWrapper } from "./AddDiscount.styles";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "../../../../commons/components/form/Input/Input";
+import Input from "../../../../commons/components/form/Input";
 import { Wrapper } from "./PatientName.styles";
 
 function PatientName() {

@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "../../../../commons/components/form/Input/Input";
+import Input from "../../../../commons/components/form/Input";
 import Label from "../../../../commons/components/form/Label";
 import { Wrapper } from "./Gender.styles";
 

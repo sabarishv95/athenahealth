@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "../../../../../../commons/components/form/Input/Input";
+import Input from "../../../../../../commons/components/form/Input";
 
 function State() {
   return <Input id="state" type="text" placeholder="State / Province" width="322" height="34" />;
