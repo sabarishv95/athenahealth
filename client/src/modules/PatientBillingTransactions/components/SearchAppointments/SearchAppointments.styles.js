@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0;
   flex-flow: wrap;
 
   .date-wrapper {
