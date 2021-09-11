@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AppHeader from "../commons/components/AppHeader";
-import PatientBillingDetails from "../modules/PatientBillingDetails/";
+import PaymentBillingDetailsContainer from "../modules/PatientBillingDetails/containers/";
 import PatientBillingTransactions from "../modules/PatientBillingTransactions/";
 
 class Routes extends React.Component {
@@ -11,7 +11,7 @@ class Routes extends React.Component {
         <AppHeader />
         <div>
           <Switch>
-            <Route exact path="/" component={PatientBillingDetails} />
+            <Route exact path="/" component={PaymentBillingDetailsContainer} />
             <Route path="/patientTransactions" component={PatientBillingTransactions} />
           </Switch>
         </div>
