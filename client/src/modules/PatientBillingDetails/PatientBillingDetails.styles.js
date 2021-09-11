@@ -36,4 +36,14 @@ export const StyledContent = styled.div`
 
 export const StyledSection = styled.section`
   display: inline-block;
+  margin-bottom: 20px;
+  width: ${({ width }) => `${width}`};
+
+  .address {
+    color: #000;
+    font-weight: 500;
+    margin-right: 10px;
+    width: 100px;
+    display: inline-block;
+  }
 `;

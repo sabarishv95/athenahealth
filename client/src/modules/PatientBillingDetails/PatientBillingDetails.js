@@ -14,6 +14,7 @@ import {
 import Age from "./components/Age";
 import AgeType from "./components/AgeType";
 import PhoneNumber from "./components/PhoneNumber";
+import Address from "./components/Address";
 
 function PatientBillingDetails() {
   return (
@@ -49,6 +50,10 @@ function PatientBillingDetails() {
             <Label id="phNo" text="Phone No" width="75" />
             <PhoneNumber />
           </StyledContent>
+        </StyledSection>
+        <StyledSection width="100%">
+          <p className="address">Address</p>
+          <Address />
         </StyledSection>
       </StyledForm>
     </Container>
