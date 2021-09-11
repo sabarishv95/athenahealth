@@ -6,13 +6,15 @@ export const Wrapper = styled.div`
   flex-direction: column;
 
   #city,
-  #zipcode {
+  #zipcode,
+  #state {
     margin-right: 10px;
     margin-bottom: 20px;
+    width: 44% !important;
   }
 
   .country {
     display: inline-block;
-    width: 329px;
+    width: 45%;
   }
 `;
