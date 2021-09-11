@@ -15,6 +15,7 @@ import Age from "./components/Age";
 import AgeType from "./components/AgeType";
 import PhoneNumber from "./components/PhoneNumber";
 import Address from "./components/Address";
+import MedicalScanDetails from "./components/MedicalScanDetails";
 
 function PatientBillingDetails() {
   return (
@@ -56,6 +57,7 @@ function PatientBillingDetails() {
           <Address />
         </StyledSection>
       </StyledForm>
+      <MedicalScanDetails />
     </Container>
   );
 }
