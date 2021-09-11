@@ -6,5 +6,5 @@ export const StyledInput = styled.input`
   border-radius: 4px;
   border: 1px solid hsl(0, 0%, 80%);
   font-size: 16px;
-  width: 250px;
+  width: ${({ width }) => `${width ? width : "250"}px`};
 `;

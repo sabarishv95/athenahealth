@@ -19,8 +19,15 @@ export const StyledForm = styled.form`
   display: flex;
 `;
 
-export const StyledName = styled.div`
+export const StyledContent = styled.div`
   display: flex;
   height: 45px;
   align-items: center;
+  margin-right: 20px;
+
+  p {
+    color: #000;
+    font-weight: 500;
+    margin-right: 10px;  
+  }
 `;
