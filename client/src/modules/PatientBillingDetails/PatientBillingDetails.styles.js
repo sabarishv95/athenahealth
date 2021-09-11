@@ -30,6 +30,7 @@ export const StyledContent = styled.div`
     color: #000;
     font-weight: 500;
     margin-right: 10px;
+    width: 75px;
   }
 `;
 

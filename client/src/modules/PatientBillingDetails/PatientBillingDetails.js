@@ -12,6 +12,8 @@ import {
   StyledSection,
 } from "./PatientBillingDetails.styles";
 import Age from "./components/Age";
+import AgeType from "./components/AgeType";
+import PhoneNumber from "./components/PhoneNumber";
 
 function PatientBillingDetails() {
   return (
@@ -39,8 +41,13 @@ function PatientBillingDetails() {
             <Gender />
           </StyledContent>
           <StyledContent>
-            <Label id="age" text="Age" />
+            <Label id="age" text="Age" width="75" />
             <Age />
+            <AgeType />
+          </StyledContent>
+          <StyledContent>
+            <Label id="phNo" text="Phone No" width="75" />
+            <PhoneNumber />
           </StyledContent>
         </StyledSection>
       </StyledForm>
