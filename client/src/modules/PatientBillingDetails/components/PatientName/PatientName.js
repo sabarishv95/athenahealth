@@ -5,7 +5,7 @@ import { Wrapper } from "./PatientName.styles";
 function PatientName() {
   return (
     <Wrapper>
-      <Input id="patientName" type="text" height="34" />
+      <Input id="patientName" type="text" height="34" width="250"/>
     </Wrapper>
   );
 }

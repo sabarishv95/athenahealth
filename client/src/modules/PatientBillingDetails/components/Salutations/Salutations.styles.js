@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    width: 75px;
+    width: 100px;
 
     & > .salutations {
         width: 100%;

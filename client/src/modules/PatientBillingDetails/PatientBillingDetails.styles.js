@@ -10,13 +10,13 @@ export const StyledHeader = styled.header`
   font-size: 20px;
   font-weight: 400;
   padding-bottom: 10px;
-  margin-bottom: 20px;
   border-bottom: 1px solid #6da2e8;
 `;
 
 export const StyledForm = styled.form`
   width: 75%;
   display: flex;
+  flex-flow: wrap;
 `;
 
 export const StyledContent = styled.div`
@@ -24,10 +24,15 @@ export const StyledContent = styled.div`
   height: 45px;
   align-items: center;
   margin-right: 20px;
+  margin-top: 20px;
 
   p {
     color: #000;
     font-weight: 500;
-    margin-right: 10px;  
+    margin-right: 10px;
   }
+`;
+
+export const StyledSection = styled.section`
+  display: inline-block;
 `;
