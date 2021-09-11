@@ -1,8 +1,12 @@
 import React from "react";
-import PatientBillingDetails from "./modules/PatientBillingDetails/PatientBillingDetails";
+import Routes from "./Routes";
 
 function App() {
-  return <PatientBillingDetails />;
+  return (
+    <>
+      <Routes />
+    </>
+  );
 }
 
 export default App;
