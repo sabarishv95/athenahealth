@@ -59,4 +59,19 @@ module.exports = {
       .populate("transactions");
     return appointments;
   },
+
+  addTransaction: async function (data) {
+    const { transactions, appointment, transaction } = data;
+    const createdTransaction = await Transactions.create(transaction);
+    const updatedAppointment = Appointments.findOneAndUpdate(
+      { _id: appointment },
+      { transactions: [...transactions, createdTransaction._id] },
+      {
+        new: true,
+      }
+    )
+      .populate("medicalScanDetails")
+      .populate("transactions");
+    return updatedAppointment;
+  },
 };

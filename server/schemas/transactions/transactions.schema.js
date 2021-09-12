@@ -1,5 +1,6 @@
 const transactionsSchema = `
     input TransactionInput {
+        _id: ID
         date: Date
         paidAmount: Int
         paymentMode: String
