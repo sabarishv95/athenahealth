@@ -5,6 +5,7 @@ import PaymentMode from "./components/PaymentMode";
 
 function AddTransaction({ minAmountToPay }) {
   const [payableAmount, updatePayableAmount] = useState(null);
+  const [paymentMode, updatePaymentMode] = useState("");
   const [isValid, updateIsValid] = useState(null);
 
   return (
@@ -18,7 +19,7 @@ function AddTransaction({ minAmountToPay }) {
         />
       </div>
       <div className="flex align-center mt20">
-        <PaymentMode />
+        <PaymentMode paymentMode={paymentMode} updatePaymentMode={updatePaymentMode} />
       </div>
       <div className="flex align-self-center mt20">
         <PaymentActions

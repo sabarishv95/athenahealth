@@ -25,8 +25,8 @@ function PaymentStatus({ state, updateState }) {
         className="payment-status"
         placeholder="Fully Paid"
         options={STATUS}
-        inputId="ageType"
-        name="ageType"
+        inputId="paymentStatus"
+        name="paymentStatus"
         getOptionLabel={(option) => `${option.label}`}
         getOptionValue={(option) => `${option.id}`}
         value={state.status ? STATUS.find((obj) => obj.label === state.status) : ""}
