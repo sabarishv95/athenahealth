@@ -16,9 +16,9 @@ const appointmentsSchema = require("./schemas/appointments/appointments.schema")
 const scansSchema = require("./schemas/scans/scans.schema");
 const transactionsSchema = require("./schemas/transactions/transactions.schema");
 
-// const queries = require("./schemas/queries");
-// const mutations = require("./schemas/mutations");
-// const root = require("./schemas/root");
+const queries = require("./schemas/queries");
+const mutations = require("./schemas/mutations");
+const root = require("./schemas/root");
 
 mongoose.connect("mongodb://localhost:27017/patient_billing_portal", {
   useNewUrlParser: true,
@@ -44,18 +44,18 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "10000kb" }));
 // parse application/json
 app.use(bodyParser.json({ limit: "10000kb", extended: true }));
 
-// var schema = buildSchema(`
-// ${userSchema}${productSchema}${reviewSchema}${imageSchema}${specificationsSchema}${tagsSchema}${categorySchema}${recentItemsSchema}${queries}${mutations}
-// `);
+const schema = buildSchema(`
+${appointmentsSchema}${scansSchema}${transactionsSchema}${queries}${mutations}
+`);
 
-// app.use(
-//   "/graphql",
-//   graphqlHTTP({
-//     schema: schema,
-//     rootValue: root,
-//     graphiql: true,
-//   })
-// );
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
 
 app.use(express.static(path.join(__dirname, "build")));
 app.get("*", function (req, res) {

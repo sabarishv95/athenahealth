@@ -1,10 +1,8 @@
 const transactionsSchema = `
-    scalar Date
-
     type Transaction {
         id: ID!
         date: Date
-        paidAmount: Number
+        paidAmount: Int
         paymentMode: String
     }
 `;

@@ -1,10 +1,17 @@
 const scansSchema = `
+    input ScanInput {
+        scanName: String
+        scanAmount: Int
+        discount: Int
+        totalAmount: Int
+    }
+
     type Scan {
         id: ID!
         scanName: String
-        scanAmount: Number
-        discount: Number
-        totalAmount: Number
+        scanAmount: Int
+        discount: Int
+        totalAmount: Int
     }
 `;
 
