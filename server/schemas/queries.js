@@ -1,6 +1,6 @@
 const queries = `
 type Query {
-    getAppointments: [Appointment]
+    searchAppointments(fromDate: Date, toDate: Date, status: String, patientName: String): [Appointment]
 }
 `;
 module.exports = queries;

@@ -35,8 +35,27 @@ module.exports = {
       return JSON.parse(JSON.stringify(createdAppointment));
     });
   },
-  getAppointments: function () {
-    const appointments = Appointments.find(data)
+  searchAppointments: function (data) {
+    const query = {};
+    const { fromDate, toDate, status, patientName } = data;
+    if (fromDate) {
+      query.appointmentDate = {
+        $gte: new Date(fromDate),
+      };
+    }
+    if (toDate) {
+      query.appointmentDate = {
+        ...query.appointmentDate,
+        $lte: new Date(toDate),
+      };
+    }
+    if (status) {
+      query.status = status;
+    }
+    if (patientName) {
+      query.patientName = new RegExp(patientName, "i");
+    }
+    const appointments = Appointments.find(query)
       .populate("medicalScanDetails")
       .populate("transactions");
     return appointments;

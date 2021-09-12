@@ -2,5 +2,5 @@ const resolvers = require("./resolvers");
 
 module.exports = {
   createAppointment: resolvers.createAppointment,
-  getAppointments: resolvers.getAppointments,
+  searchAppointments: resolvers.searchAppointments,
 };

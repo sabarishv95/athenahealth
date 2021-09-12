@@ -14,6 +14,7 @@ const appointmentsSchema = `
         appointmentDate: Date
         phoneNumber: BigInt
         address: String
+        status: String,
         medicalScanDetails: [ScanInput]
     }
 
@@ -28,6 +29,7 @@ const appointmentsSchema = `
         appointmentDate: Date
         phoneNumber: BigInt
         address: String
+        status: String
         medicalScanDetails: [Scan]
     }
 `;
