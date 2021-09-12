@@ -40,4 +40,9 @@ export const COUNTRY = [
     label: "India",
     name: "india",
   },
+  {
+    id: 2,
+    label: "USA",
+    name: "usa",
+  },
 ];

@@ -12,7 +12,7 @@ function DOB() {
       const diff = moment().diff(value, "years");
       const date = isMoment ? moment(value).format("DD-MM-YYYY") : "";
       updatePaymentBillingDetailsKey("dob", date);
-      updatePaymentBillingDetailsKey("ageType", isMoment ? "years" : "");
+      updatePaymentBillingDetailsKey("ageType", isMoment ? "Years" : "");
       updatePaymentBillingDetailsKey("age", isMoment ? diff : "");
       if (!isMoment) ref.current._closeCalendar();
     },

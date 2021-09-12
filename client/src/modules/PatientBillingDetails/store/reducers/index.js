@@ -15,7 +15,7 @@ const INITIAL_STATE = {
       streetAddress1: "",
       city: "",
       state: "",
-      zipCode: "",
+      zipCode: null,
       country: "",
     },
     medicalScanDetails: [],

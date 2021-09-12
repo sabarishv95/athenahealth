@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
 
   #city,
-  #zipcode,
+  #zipCode,
   #state {
     margin-right: 10px;
     margin-bottom: 20px;
