@@ -19,7 +19,7 @@ function Zipcode({ updateAddress }) {
       width="322"
       height="34"
       onChange={onZipCodeChange}
-      value={paymentDetails.address.zipCode}
+      value={paymentDetails.address.zipCode || ""}
     />
   );
 }

@@ -19,7 +19,7 @@ function PhoneNumber() {
       width="200"
       height="34"
       onChange={onPhoneNumberChange}
-      value={paymentDetails.phoneNumber ? paymentDetails.phoneNumber : ""}
+      value={paymentDetails.phoneNumber || ""}
     />
   );
 }

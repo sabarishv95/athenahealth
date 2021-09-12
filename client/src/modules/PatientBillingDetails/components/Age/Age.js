@@ -20,7 +20,7 @@ function Age() {
         height="34"
         width="75"
         onChange={onAgeChange}
-        value={paymentDetails.age ? paymentDetails.age : ""}
+        value={paymentDetails.age || ""}
       />
     </Wrapper>
   );
