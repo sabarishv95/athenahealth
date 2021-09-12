@@ -1,4 +1,8 @@
-import { UPDATE_PAYMENT_BILLING_DETAILS, UPDATE_PAYMENT_BILLING_DETAILS_KEY } from "../types";
+import {
+  UPDATE_PAYMENT_BILLING_DETAILS,
+  UPDATE_PAYMENT_BILLING_DETAILS_KEY,
+  SET_CURRENT_APPOINTMENTS,
+} from "../types";
 
 export const INITIAL_STATE = {
   paymentDetails: {
@@ -20,6 +24,7 @@ export const INITIAL_STATE = {
     },
     medicalScanDetails: [],
   },
+  currentAppointments: [],
 };
 
 export default function paymentBillingDetails(state = INITIAL_STATE, action) {
@@ -38,6 +43,12 @@ export default function paymentBillingDetails(state = INITIAL_STATE, action) {
           [action.key]: action.value,
         },
       };
+    }
+    case SET_CURRENT_APPOINTMENTS: {
+      return {
+        ...state,
+        currentAppointments: action.appointments
+      }
     }
     default: {
       return state;
