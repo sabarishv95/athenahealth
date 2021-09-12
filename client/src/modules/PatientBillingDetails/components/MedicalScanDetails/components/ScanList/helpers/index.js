@@ -1,8 +1,8 @@
 import { MEDICAL_BILLING_MASTER } from "../../../../../constants";
 
 /**
- * 
- * @param {String} medicalBilling 
+ *
+ * @param {String} medicalBilling
  * @returns medical billing {Object}
  */
 export function getMedicalBilling(medicalBilling) {
@@ -19,12 +19,15 @@ export function getAmount(medicalBilling) {
 }
 
 /**
- * 
- * @param {String} medicalBilling 
- * @param {Number} discount 
+ *
+ * @param {String} medicalBilling
+ * @param {Number} discount
  * @returns if the provided disscount is valid or not
  */
 export function validateDiscount(medicalBilling, discount) {
   const billing = getMedicalBilling(medicalBilling);
-  return discount <= billing.maxDiscount.amount;
+  const maxDiscount = !billing.maxDiscount.percent
+    ? billing.maxDiscount.amount
+    : (billing.maxDiscount.amount / 100) * billing.scanAmount;
+  return discount <= maxDiscount;
 }

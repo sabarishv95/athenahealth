@@ -32,7 +32,7 @@ module.exports = {
         .populate("medicalScanDetails")
         .populate("transactions")
         .execPopulate();
-      return JSON.parse(JSON.stringify(createdAppointment));
+      return createdAppointment;
     });
   },
   searchAppointments: function (data) {
