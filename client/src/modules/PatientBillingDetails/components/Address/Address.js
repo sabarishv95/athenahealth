@@ -6,13 +6,14 @@ import State from "./components/State";
 import StreetAddress from "./components/StreetAddress";
 import Zipcode from "./components/Zipcode";
 import PaymentDetailsContext from "../../context";
+import { cloneDeep } from "lodash";
 
 function Address() {
   const { paymentDetails, updatePaymentBillingDetailsKey } = useContext(PaymentDetailsContext);
 
   const updateAddress = useCallback(
     (key, value) => {
-      const address = paymentDetails.address;
+      const address = cloneDeep(paymentDetails.address);
       address[key] = value;
       updatePaymentBillingDetailsKey("address", address);
     },

@@ -21,9 +21,11 @@ import Button from "../../commons/components/form/Button";
 import { validateForm } from "./helpers";
 import PaymentDetailsContext from "./context";
 import Api from "../../API";
+import { INITIAL_STATE } from "./store/reducers";
 
 function PatientBillingDetails() {
-  const { paymentDetails } = useContext(PaymentDetailsContext);
+  const { paymentDetails, updatePaymentBillingDetails, history } =
+    useContext(PaymentDetailsContext);
   const [isValid, updateIsValid] = useState(null);
 
   const onSave = useCallback(() => {
@@ -52,23 +54,31 @@ function PatientBillingDetails() {
           }
         }
       }`;
-      api.graphqlRequest(mutation, {
-        appointment: {
-          ...paymentDetails,
-          address: JSON.stringify(paymentDetails.address),
-          medicalScanDetails: paymentDetails.medicalScanDetails.map((obj) => {
-            return {
-              scanName: obj.scanName,
-              scanAmount: obj.scanAmount,
-              discount: obj.discount,
-              totalAmount: obj.totalAmount,
-            };
-          }),
-        },
-      });
+      api
+        .graphqlRequest(mutation, {
+          appointment: {
+            ...paymentDetails,
+            address: JSON.stringify(paymentDetails.address),
+            medicalScanDetails: paymentDetails.medicalScanDetails.map((obj) => {
+              return {
+                scanName: obj.scanName,
+                scanAmount: obj.scanAmount,
+                discount: obj.discount,
+                totalAmount: obj.totalAmount,
+              };
+            }),
+          },
+        })
+        .then((response) => {
+          updatePaymentBillingDetails(INITIAL_STATE.paymentDetails);
+          history.push("/patientTransactions");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     updateIsValid(isValid);
-  }, [paymentDetails]);
+  }, [paymentDetails, updatePaymentBillingDetails, history]);
 
   return (
     <Container>

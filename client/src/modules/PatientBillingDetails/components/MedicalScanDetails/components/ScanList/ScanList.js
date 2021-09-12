@@ -19,7 +19,7 @@ function ScanList() {
   const onAddClick = useCallback(() => {
     const valid = validateDiscount(medicalBilling, Number(discount));
     if (valid) {
-      const medicalScanDetails = paymentDetails.medicalScanDetails;
+      const medicalScanDetails = [...paymentDetails.medicalScanDetails];
       const billing = getMedicalBilling(medicalBilling);
       medicalScanDetails.push({
         Sno: medicalScanDetails.length + 1,

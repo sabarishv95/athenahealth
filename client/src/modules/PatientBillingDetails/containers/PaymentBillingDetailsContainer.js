@@ -22,6 +22,7 @@ function PaymentBillingDetailsContainer(props) {
         paymentDetails: props.paymentDetails,
         updatePaymentBillingDetails: props.updatePaymentBillingDetails,
         updatePaymentBillingDetailsKey: props.updatePaymentBillingDetailsKey,
+        history: props.history,
       }}
     >
       <PaymentBillingDetails />

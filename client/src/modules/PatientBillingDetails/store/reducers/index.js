@@ -1,6 +1,6 @@
 import { UPDATE_PAYMENT_BILLING_DETAILS, UPDATE_PAYMENT_BILLING_DETAILS_KEY } from "../types";
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   paymentDetails: {
     salutation: "",
     patientName: "",
