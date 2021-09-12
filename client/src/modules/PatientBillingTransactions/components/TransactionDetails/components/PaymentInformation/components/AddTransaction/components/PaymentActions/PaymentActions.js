@@ -12,11 +12,17 @@ function PaymentActions({
   balanceAmount,
   updateIsAmountExceeded,
 }) {
-  const { setAppointment, appointment } = useContext(PaymentTransactionsContext);
+  const { setAppointment, setAppointments, appointment, appointments } = useContext(
+    PaymentTransactionsContext
+  );
 
   const onCancel = useCallback(() => {
+    const updatedAppointments = appointments.map((obj) => {
+      return obj._id !== appointment._id ? obj : appointment;
+    });
+    setAppointments(updatedAppointments);
     setAppointment();
-  }, [setAppointment]);
+  }, [setAppointment, appointment, appointments, setAppointments]);
 
   const onSave = useCallback(() => {
     const isValid = payableAmount >= minAmountToPay;
