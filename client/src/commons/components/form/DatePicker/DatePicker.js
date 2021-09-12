@@ -9,7 +9,7 @@ function DatePicker({ id, onChange, value, reference }) {
       <Datetime
         className="date-wrapper"
         timeFormat={false}
-        dateFormat="DD-MM-YYYY"
+        dateFormat="MM-DD-YYYY"
         renderInput={(props) => {
           return <input id={id} className="form-control" {...props} value={value ? value : ""} />;
         }}

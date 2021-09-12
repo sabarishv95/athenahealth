@@ -9,7 +9,7 @@ function AppointmentDate() {
   const onAppointmentDateChange = useCallback(
     (value) => {
       const isMoment = moment.isMoment(value);
-      const date = isMoment ? moment(value).format("DD-MM-YYYY") : "";
+      const date = isMoment ? moment(value).format("MM-DD-YYYY") : "";
       updatePaymentBillingDetailsKey("appointmentDate", date);
       if (!isMoment) ref.current._closeCalendar();
     },

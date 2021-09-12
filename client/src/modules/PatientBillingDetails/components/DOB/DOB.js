@@ -10,7 +10,7 @@ function DOB() {
     (value) => {
       const isMoment = moment.isMoment(value);
       const diff = moment().diff(value, "years");
-      const date = isMoment ? moment(value).format("DD-MM-YYYY") : "";
+      const date = isMoment ? moment(value).format("MM-DD-YYYY") : "";
       updatePaymentBillingDetailsKey("dob", date);
       updatePaymentBillingDetailsKey("ageType", isMoment ? "Years" : "");
       updatePaymentBillingDetailsKey("age", isMoment ? diff : "");
