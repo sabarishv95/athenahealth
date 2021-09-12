@@ -3,10 +3,11 @@ import PayableAmount from "./components/PayableAmount";
 import PaymentActions from "./components/PaymentActions";
 import PaymentMode from "./components/PaymentMode";
 
-function AddTransaction({ minAmountToPay }) {
+function AddTransaction({ minAmountToPay, balanceAmount }) {
   const [payableAmount, updatePayableAmount] = useState(null);
   const [paymentMode, updatePaymentMode] = useState("");
   const [isValid, updateIsValid] = useState(null);
+  const [isAmountExceeded, updateIsAmountExceeded] = useState(null);
 
   return (
     <>
@@ -16,6 +17,8 @@ function AddTransaction({ minAmountToPay }) {
           payableAmount={payableAmount}
           updatePayableAmount={updatePayableAmount}
           minAmountToPay={minAmountToPay}
+          balanceAmount={balanceAmount}
+          isAmountExceeded={isAmountExceeded}
         />
       </div>
       <div className="flex align-center mt20">
@@ -27,6 +30,8 @@ function AddTransaction({ minAmountToPay }) {
           payableAmount={payableAmount}
           paymentMode={paymentMode}
           minAmountToPay={minAmountToPay}
+          balanceAmount={balanceAmount}
+          updateIsAmountExceeded={updateIsAmountExceeded}
         />
       </div>
     </>

@@ -4,7 +4,14 @@ import PaymentTransactionsContext from "../../../../../../../../context";
 import Api from "../../../../../../../../../../API";
 import moment from "moment";
 
-function PaymentActions({ payableAmount, minAmountToPay, updateIsValid, paymentMode }) {
+function PaymentActions({
+  payableAmount,
+  minAmountToPay,
+  updateIsValid,
+  paymentMode,
+  balanceAmount,
+  updateIsAmountExceeded,
+}) {
   const { setAppointment, appointment } = useContext(PaymentTransactionsContext);
 
   const onCancel = useCallback(() => {
@@ -13,8 +20,9 @@ function PaymentActions({ payableAmount, minAmountToPay, updateIsValid, paymentM
 
   const onSave = useCallback(() => {
     const isValid = payableAmount >= minAmountToPay;
+    const isAmountExceeded = payableAmount > balanceAmount;
     const api = new Api();
-    if (isValid) {
+    if (isValid && !isAmountExceeded) {
       const query = `mutation addTransaction($appointment: ID, $transaction: TransactionInput!, $transactions: [ID]) {
         addTransaction(appointment: $appointment, transaction: $transaction, transactions: $transactions) {
           _id
@@ -55,7 +63,17 @@ function PaymentActions({ payableAmount, minAmountToPay, updateIsValid, paymentM
         });
     }
     updateIsValid(isValid);
-  }, [updateIsValid, minAmountToPay, payableAmount, appointment, paymentMode, setAppointment]);
+    updateIsAmountExceeded(isAmountExceeded);
+  }, [
+    updateIsValid,
+    minAmountToPay,
+    payableAmount,
+    appointment,
+    paymentMode,
+    setAppointment,
+    updateIsAmountExceeded,
+    balanceAmount,
+  ]);
 
   const isSaveDisabled = appointment.transactions.length === 3 || !paymentMode || !payableAmount;
 

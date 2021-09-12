@@ -2,7 +2,14 @@ import React, { useCallback } from "react";
 import Input from "../../../../../../../../../../commons/components/form/Input";
 import Label from "../../../../../../../../../../commons/components/form/Label";
 
-function PayableAmount({ updatePayableAmount, payableAmount, isValid, minAmountToPay }) {
+function PayableAmount({
+  updatePayableAmount,
+  payableAmount,
+  isValid,
+  minAmountToPay,
+  isAmountExceeded,
+  balanceAmount,
+}) {
   const onPayableAmountChange = useCallback(
     (e) => {
       updatePayableAmount(e.target.value);
@@ -21,6 +28,7 @@ function PayableAmount({ updatePayableAmount, payableAmount, isValid, minAmountT
         value={payableAmount || ""}
       />
       {isValid === false && <p className="error-msg">Minimum Amount: {minAmountToPay}</p>}
+      {isAmountExceeded && <p className="error-msg">Maximum Amount: {balanceAmount} </p>}
     </>
   );
 }

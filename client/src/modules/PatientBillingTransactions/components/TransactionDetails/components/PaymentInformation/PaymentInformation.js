@@ -24,7 +24,7 @@ function PaymentInformation() {
         paidAmount={paidAmount}
         balanceAmount={balanceAmount}
       />
-      <AddTransaction minAmountToPay={minAmountToPay} />
+      <AddTransaction minAmountToPay={minAmountToPay} balanceAmount={balanceAmount} />
     </Wrapper>
   );
 }
