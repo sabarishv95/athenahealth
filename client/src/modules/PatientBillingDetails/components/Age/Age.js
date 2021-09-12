@@ -2,6 +2,7 @@ import React, { useContext, useCallback } from "react";
 import Input from "../../../../commons/components/form/Input";
 import { Wrapper } from "./Age.styles";
 import PaymentDetailsContext from "../../context";
+import moment from "moment";
 
 function Age() {
   const { paymentDetails, updatePaymentBillingDetailsKey } = useContext(PaymentDetailsContext);
@@ -9,8 +10,12 @@ function Age() {
   const onAgeChange = useCallback(
     (e) => {
       updatePaymentBillingDetailsKey(e.target.id, Number(e.target.value));
+      if (paymentDetails.ageType) {
+        const date = moment().subtract(Number(e.target.value), paymentDetails.ageType);
+        updatePaymentBillingDetailsKey("dob", date.format("MM-DD-YYYY"));
+      }
     },
-    [updatePaymentBillingDetailsKey]
+    [updatePaymentBillingDetailsKey, paymentDetails]
   );
   return (
     <Wrapper>

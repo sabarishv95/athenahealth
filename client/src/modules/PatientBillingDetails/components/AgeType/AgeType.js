@@ -3,6 +3,7 @@ import Select from "react-select";
 import { Wrapper } from "./AgeType.styles";
 import { AGE_TYPE } from "../../constants";
 import PaymentDetailsContext from "../../context";
+import moment from "moment";
 
 function AgeType() {
   const { paymentDetails, updatePaymentBillingDetailsKey } = useContext(PaymentDetailsContext);
@@ -10,8 +11,12 @@ function AgeType() {
   const onAgeTypeChange = useCallback(
     (e) => {
       updatePaymentBillingDetailsKey("ageType", e.label);
+      if (paymentDetails.age) {
+        const date = moment().subtract(paymentDetails.age, e.label);
+        updatePaymentBillingDetailsKey("dob", date.format("MM-DD-YYYY"));
+      }
     },
-    [updatePaymentBillingDetailsKey]
+    [updatePaymentBillingDetailsKey, paymentDetails]
   );
 
   return (
