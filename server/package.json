@@ -1,0 +1,33 @@
+{
+  "name": "patient_billing_portal_server",
+  "version": "1.0.0",
+  "description": "BE for Patient Billing Portal",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "sabarishv95",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.4.0",
+    "body-parser": "^1.18.3",
+    "canvas": "^2.3.1",
+    "cors": "^2.8.5",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "graphql": "^14.0.2",
+    "https": "^1.0.0",
+    "mongodb": "^3.1.11",
+    "mongoose": "^5.4.4",
+    "path": "^0.12.7",
+    "request": "^2.86.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
