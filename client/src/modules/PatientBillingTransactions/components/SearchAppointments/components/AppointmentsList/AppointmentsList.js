@@ -77,6 +77,7 @@ function AppointmentsList() {
               totalAmount
             }
             transactions{
+              _id
               date
               paidAmount
               paymentMode
