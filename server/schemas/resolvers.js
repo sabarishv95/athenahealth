@@ -63,9 +63,13 @@ module.exports = {
   addTransaction: async function (data) {
     const { transactions, appointment, transaction } = data;
     const createdTransaction = await Transactions.create(transaction);
+    const allTransactions = [...transactions, createdTransaction._id];
     const updatedAppointment = Appointments.findOneAndUpdate(
       { _id: appointment },
-      { transactions: [...transactions, createdTransaction._id] },
+      {
+        transactions: allTransactions,
+        status: allTransactions.length === 3 ? "Fully Billed" : "Due Billed",
+      },
       {
         new: true,
       }
@@ -77,7 +81,6 @@ module.exports = {
 
   getAppointment: function (data) {
     const { appointment } = data;
-    console.log(appointment)
     return Appointments.findById(appointment)
       .populate("medicalScanDetails")
       .populate("transactions");
