@@ -9,6 +9,7 @@ const INITIAL_STATE = {
     age: null,
     ageType: "",
     appointmentDate: "",
+    phoneNumber: null,
     address: {
       streetAddress: "",
       streetAddress1: "",

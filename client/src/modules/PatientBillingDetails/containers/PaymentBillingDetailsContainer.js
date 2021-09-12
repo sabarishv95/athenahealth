@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PaymentBillingDetails from "../index";
 import { updatePaymentBillingDetails, updatePaymentBillingDetailsKey } from "../store/actions";
-import PaymentDetailsContext from "../context/PaymentDetailsContext";
+import PaymentDetailsContext from "../context";
 
 const mapDispatchToProps = (dispatch) => ({
   updatePaymentBillingDetails: (data) => dispatch(updatePaymentBillingDetails(data)),
@@ -11,10 +11,11 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    paymentDetails: state.paymentBillingDetails.paymentDetails,
+  paymentDetails: state.paymentBillingDetails.paymentDetails,
 });
 
 function PaymentBillingDetailsContainer(props) {
+  //Adding context to avoid props drilling
   return (
     <PaymentDetailsContext.Provider
       value={{

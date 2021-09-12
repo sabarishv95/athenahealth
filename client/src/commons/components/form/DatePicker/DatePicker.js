@@ -3,7 +3,7 @@ import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import { Wrapper } from "./DatePicker.styles";
 
-function DatePicker({ id, onChange, value }) {
+function DatePicker({ id, onChange, value, reference }) {
   return (
     <Wrapper>
       <Datetime
@@ -16,6 +16,7 @@ function DatePicker({ id, onChange, value }) {
         value={value ? value : ""}
         onChange={onChange}
         closeOnSelect
+        ref={reference}
       />
     </Wrapper>
   );

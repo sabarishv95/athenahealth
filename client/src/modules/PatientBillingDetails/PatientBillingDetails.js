@@ -1,6 +1,5 @@
 import React from "react";
 import Label from "../../commons/components/form/Label";
-import DatePicker from "../../commons/components/form/DatePicker";
 import Gender from "./components/Gender";
 import PatientName from "./components/PatientName";
 import Salutations from "./components/Salutations";
@@ -16,6 +15,8 @@ import AgeType from "./components/AgeType";
 import PhoneNumber from "./components/PhoneNumber";
 import Address from "./components/Address";
 import MedicalScanDetails from "./components/MedicalScanDetails";
+import DOB from "./components/DOB";
+import AppointmentDate from "./components/AppointmentDate";
 
 function PatientBillingDetails() {
   return (
@@ -30,11 +31,11 @@ function PatientBillingDetails() {
           </StyledContent>
           <StyledContent>
             <Label id="DOB" text="DOB" width="100" />
-            <DatePicker id="DOB" />
+            <DOB />
           </StyledContent>
           <StyledContent>
             <Label id="appointmentDate" text="Appointment Date" width="100" />
-            <DatePicker id="appointmentDate" />
+            <AppointmentDate />
           </StyledContent>
         </StyledSection>
         <StyledSection>
@@ -48,7 +49,7 @@ function PatientBillingDetails() {
             <AgeType />
           </StyledContent>
           <StyledContent>
-            <Label id="phNo" text="Phone No" width="75" />
+            <Label id="phoneNumber" text="Phone No" width="75" />
             <PhoneNumber />
           </StyledContent>
         </StyledSection>

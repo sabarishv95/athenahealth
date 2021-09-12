@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledInput } from "./Input.styles";
 
-function Input({ width, height, type, id, name, className, placeholder }) {
+function Input({ width, height, type, id, name, className, placeholder, onChange, value, checked }) {
   return (
     <StyledInput
       id={id}
@@ -11,6 +11,9 @@ function Input({ width, height, type, id, name, className, placeholder }) {
       name={name}
       className={className ? className : ""}
       placeholder={placeholder ? placeholder : ""}
+      onChange={onChange}
+      value={value}
+      checked={checked}
     />
   );
 }
