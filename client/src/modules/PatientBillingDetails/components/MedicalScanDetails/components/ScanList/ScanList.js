@@ -57,23 +57,30 @@ function ScanList() {
         medicalBilling={medicalBilling}
         onStateChange={updateMedicalBilling}
         updateIsValid={updateIsValid}
+        updateIsSlotAvailable={updateIsSlotAvailable}
       />
       <ScanAmount amount={amount} />
       <AddDiscount
         discount={discount}
         onStateChange={updateDiscount}
         updateIsValid={updateIsValid}
+        updateIsSlotAvailable={updateIsSlotAvailable}
       />
       <Button
-        className={`${(!medicalBilling || !paymentDetails.appointmentDate) ? "disabled" : ""} addBtn`}
+        className={`${
+          !medicalBilling || !paymentDetails.appointmentDate || discount < 0 ? "disabled" : ""
+        } addBtn`}
         label="Add"
         height="38"
         width="80"
         onClick={onAddClick}
-        disabled={(!medicalBilling || !paymentDetails.appointmentDate)}
+        disabled={
+          !medicalBilling || !paymentDetails.appointmentDate || (discount < 0 && discount !== null)
+        }
       />
       {isValid === false && <p className="error-msg">Discount Exceeds max discount</p>}
       {isSlotAvailable === false && <p className="error-msg">No Slots Available</p>}
+      {discount < 0 && <p className="error-msg">Discount should be greated than 0</p>}
     </StyledWrapper>
   );
 }

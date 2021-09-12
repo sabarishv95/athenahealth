@@ -3,13 +3,14 @@ import Input from "../../../../../../../../commons/components/form/Input";
 import Label from "../../../../../../../../commons/components/form/Label";
 import { StyledWrapper } from "./AddDiscount.styles";
 
-function AddDiscount({ discount, onStateChange, updateIsValid }) {
+function AddDiscount({ discount, onStateChange, updateIsValid, updateIsSlotAvailable }) {
   const onDiscountChange = useCallback(
     (e) => {
       onStateChange(e.target.value);
-      updateIsValid(null)
+      updateIsValid(null);
+      updateIsSlotAvailable(null);
     },
-    [onStateChange, updateIsValid]
+    [onStateChange, updateIsValid, updateIsSlotAvailable]
   );
 
   return (
