@@ -17,4 +17,12 @@ export const StyledWrapper = styled.div`
   & > p {
     min-width: 150px;
   }
+
+  .addBtn {
+    margin-left: 10px;
+  }
+
+  .error-msg {
+    margin-left: 10px;
+  }
 `;

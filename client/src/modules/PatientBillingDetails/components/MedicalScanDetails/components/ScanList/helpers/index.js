@@ -9,3 +9,8 @@ export function getAmount(medicalBilling) {
   const billing = MEDICAL_BILLING_MASTER.find((obj) => obj.medicalBilling === medicalBilling);
   return billing ? billing.scanAmount : null;
 }
+
+export function validateDiscount(medicalBilling, discount) {
+  const billing = MEDICAL_BILLING_MASTER.find((obj) => obj.medicalBilling === medicalBilling);
+  return discount <= billing.maxDiscount.amount;
+}

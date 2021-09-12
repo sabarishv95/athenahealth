@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledButton } from "./Button.styles";
 
-function Button({ width, height, borderColor, background, color, className, label }) {
+function Button({ width, height, borderColor, background, color, className, label, onClick }) {
   return (
     <StyledButton
       width={width}
@@ -10,6 +10,7 @@ function Button({ width, height, borderColor, background, color, className, labe
       background={background}
       color={color}
       className={className ? className : ""}
+      onClick={onClick}
     >
       {label}
     </StyledButton>

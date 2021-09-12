@@ -1,15 +1,15 @@
 import React, { useCallback } from "react";
-import Button from "../../../../../../../../commons/components/form/Button";
 import Input from "../../../../../../../../commons/components/form/Input";
 import Label from "../../../../../../../../commons/components/form/Label";
 import { StyledWrapper } from "./AddDiscount.styles";
 
-function AddDiscount({ discount, onStateChange }) {
+function AddDiscount({ discount, onStateChange, updateIsValid }) {
   const onDiscountChange = useCallback(
     (e) => {
       onStateChange(e.target.value);
+      updateIsValid(null)
     },
-    [onStateChange]
+    [onStateChange, updateIsValid]
   );
 
   return (
@@ -23,7 +23,6 @@ function AddDiscount({ discount, onStateChange }) {
         onChange={onDiscountChange}
         value={discount || ""}
       />
-      <Button className="addBtn" label="Add" height="38" width="80" />
     </StyledWrapper>
   );
 }

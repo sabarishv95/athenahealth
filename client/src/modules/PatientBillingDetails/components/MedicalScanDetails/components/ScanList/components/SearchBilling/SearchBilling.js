@@ -2,12 +2,13 @@ import React, { useCallback } from "react";
 import Select from "react-select";
 import { MEDICAL_BILLING_MASTER } from "../../../../../../constants";
 
-function SearchBilling({ medicalBilling, onStateChange }) {
+function SearchBilling({ medicalBilling, onStateChange, updateIsValid }) {
   const onChange = useCallback(
     (e) => {
       onStateChange(e.medicalBilling);
+      updateIsValid(null)
     },
-    [onStateChange]
+    [onStateChange, updateIsValid]
   );
 
   return (
