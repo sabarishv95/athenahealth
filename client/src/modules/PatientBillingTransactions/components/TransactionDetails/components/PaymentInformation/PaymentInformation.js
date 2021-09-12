@@ -3,7 +3,7 @@ import { Wrapper } from "./PaymentInformation.styles";
 import AddTransaction from "./components/AddTransaction";
 import Information from "./components/Information";
 import PaymentTransactionsContext from "../../../../context";
-import { getValue } from "./helpers";
+import { getValue } from "../../../../helpers";
 
 function PaymentInformation() {
   const { appointment } = useContext(PaymentTransactionsContext);

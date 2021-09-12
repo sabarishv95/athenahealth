@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from "react";
 import Table from "../../../../../../commons/components/Table";
 import { Wrapper } from "./TransactionList.styles";
 import PaymentTransactionsContext from "../../../../context";
+import moment from "moment";
 
 function TransactionList() {
   const { appointment } = useContext(PaymentTransactionsContext);
@@ -25,7 +26,18 @@ function TransactionList() {
     },
   ];
 
-  const data = useMemo(() => appointment.transactions, [appointment.transactions]);
+  const data = useMemo(
+    () =>
+      appointment.transactions.map((obj, index) => {
+        console.log(moment(obj.date).format("MM-DD-YYYY"));
+        return {
+          ...obj,
+          Sno: index + 1,
+          date: moment(obj.date).format("MM-DD-YYYY"),
+        };
+      }),
+    [appointment.transactions]
+  );
 
   return (
     <Wrapper>

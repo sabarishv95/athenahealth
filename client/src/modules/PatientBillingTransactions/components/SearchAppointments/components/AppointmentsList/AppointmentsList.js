@@ -2,6 +2,8 @@ import React, { useCallback, useContext, useMemo } from "react";
 import Table from "../../../../../../commons/components/Table";
 import { Wrapper } from "./AppointmentsList.styles";
 import PaymentTransactionsContext from "../../../../context";
+import moment from "moment";
+import { getValue } from "../../../../helpers";
 
 function AppointmentsList() {
   const { appointments, setAppointment } = useContext(PaymentTransactionsContext);
@@ -29,10 +31,28 @@ function AppointmentsList() {
     },
     {
       Header: "Action",
+      accessor: "Action",
     },
   ];
 
-  const data = useMemo(() => appointments, [appointments]);
+  const data = useMemo(
+    () =>
+      appointments.map((obj, index) => {
+        const totalAmount = getValue(obj.medicalScanDetails, "scanAmount");
+        const discount = getValue(obj.medicalScanDetails, "discount");
+        const paidAmount = getValue(obj.transactions, "paidAmount");
+        const balanceAmount = totalAmount - discount - paidAmount;
+        return {
+          ...obj,
+          Sno: index + 1,
+          ageGender: `${obj.age}-${obj.gender}`,
+          appointmentDate: moment(obj.appointmentDate).format("MM-DD-YYYY"),
+          balanceAmount,
+          Action: "Click to pay",
+        };
+      }),
+    [appointments]
+  );
 
   const onCellClick = useCallback(
     (e) => {

@@ -34,7 +34,7 @@ function Table({ columns, data, onCellClick }) {
                 const cellProps = cell.getCellProps();
                 return (
                   <td id={cellProps.key} {...cellProps} onClick={onClick}>
-                    {cellProps.key.includes("Action") ? "Click to Pay" : cell.render("Cell")}
+                    {cell.render("Cell")}
                   </td>
                 );
               })}
