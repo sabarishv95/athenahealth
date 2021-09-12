@@ -23,6 +23,9 @@ export const Wrapper = styled.div`
 
     td {
       text-align: center;
+      &:last-child {
+        cursor: pointer;
+      }
     }
   }
 
