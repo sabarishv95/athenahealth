@@ -74,4 +74,12 @@ module.exports = {
       .populate("transactions");
     return updatedAppointment;
   },
+
+  getAppointment: function (data) {
+    const { appointment } = data;
+    console.log(appointment)
+    return Appointments.findById(appointment)
+      .populate("medicalScanDetails")
+      .populate("transactions");
+  },
 };

@@ -4,6 +4,7 @@ import { Wrapper } from "./AppointmentsList.styles";
 import PaymentTransactionsContext from "../../../../context";
 import moment from "moment";
 import { getValue } from "../../../../helpers";
+import Api from "../../../../../../API";
 
 function AppointmentsList() {
   const { appointments, setAppointment } = useContext(PaymentTransactionsContext);
@@ -60,7 +61,36 @@ function AppointmentsList() {
       if (target.includes("Action")) {
         const index = target.split("_")[1];
         const appointment = appointments[index];
-        setAppointment(appointment);
+        const api = new Api();
+        const query = `query getAppointment($appointment: ID) {
+          getAppointment(appointment:$appointment) {
+            _id
+            patientName
+            gender
+            age
+            appointmentDate
+            status
+            medicalScanDetails {
+              scanName
+              scanAmount
+              discount
+              totalAmount
+            }
+            transactions{
+              date
+              paidAmount
+              paymentMode
+            }
+          }
+        }`;
+        api
+          .graphqlRequest(query, { appointment: appointment._id })
+          .then((response) => {
+            setAppointment(response.data.data.getAppointment);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
     [appointments, setAppointment]

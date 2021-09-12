@@ -29,7 +29,6 @@ function TransactionList() {
   const data = useMemo(
     () =>
       appointment.transactions.map((obj, index) => {
-        console.log(moment(obj.date).format("MM-DD-YYYY"));
         return {
           ...obj,
           Sno: index + 1,
