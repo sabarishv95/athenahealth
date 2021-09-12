@@ -6,21 +6,29 @@ import { getAmount, validateDiscount, getMedicalBilling } from "./helpers";
 import { StyledWrapper } from "./ScanList.styles";
 import Button from "../../../../../../commons/components/form/Button";
 import PaymentDetailsContext from "../../../../context";
+import { MODALITY_SLOT_DETAILS } from "../../../../constants";
 
 function ScanList() {
-  const { paymentDetails, updatePaymentBillingDetailsKey } = useContext(PaymentDetailsContext);
+  const { paymentDetails, currentAppointments, updatePaymentBillingDetailsKey } =
+    useContext(PaymentDetailsContext);
 
   const [medicalBilling, updateMedicalBilling] = useState("");
   const [discount, updateDiscount] = useState(null);
   const [isValid, updateIsValid] = useState(null);
+  const [isSlotAvailable, updateIsSlotAvailable] = useState(null);
 
   const amount = getAmount(medicalBilling);
 
   const onAddClick = useCallback(() => {
     const valid = validateDiscount(medicalBilling, Number(discount));
-    if (valid) {
+    const billing = getMedicalBilling(medicalBilling);
+    const modality = MODALITY_SLOT_DETAILS.find((obj) => obj.id === billing.modalityId);
+    const takenSlots = currentAppointments.filter((obj) =>
+      obj.medicalScanDetails.some((scan) => scan.scanName === medicalBilling)
+    );
+    const isSlotAvailable = takenSlots.length < modality.slots;
+    if (valid && isSlotAvailable) {
       const medicalScanDetails = [...paymentDetails.medicalScanDetails];
-      const billing = getMedicalBilling(medicalBilling);
       medicalScanDetails.push({
         Sno: medicalScanDetails.length + 1,
         scanName: medicalBilling,
@@ -29,10 +37,19 @@ function ScanList() {
         totalAmount: billing.scanAmount - Number(discount),
       });
       updatePaymentBillingDetailsKey("medicalScanDetails", medicalScanDetails);
-      updateMedicalBilling("")
+      updateMedicalBilling("");
     }
+    updateIsSlotAvailable(isSlotAvailable);
     updateIsValid(valid);
-  }, [updateIsValid, discount, medicalBilling, updatePaymentBillingDetailsKey, paymentDetails.medicalScanDetails]);
+  }, [
+    updateIsValid,
+    discount,
+    medicalBilling,
+    updatePaymentBillingDetailsKey,
+    paymentDetails.medicalScanDetails,
+    updateIsSlotAvailable,
+    currentAppointments,
+  ]);
 
   return (
     <StyledWrapper>
@@ -48,14 +65,15 @@ function ScanList() {
         updateIsValid={updateIsValid}
       />
       <Button
-        className={`${!medicalBilling ? "disabled" : ""} addBtn`}
+        className={`${(!medicalBilling || !paymentDetails.appointmentDate) ? "disabled" : ""} addBtn`}
         label="Add"
         height="38"
         width="80"
         onClick={onAddClick}
-        disabled={!medicalBilling}
+        disabled={(!medicalBilling || !paymentDetails.appointmentDate)}
       />
       {isValid === false && <p className="error-msg">Discount Exceeds max discount</p>}
+      {isSlotAvailable === false && <p className="error-msg">No Slots Available</p>}
     </StyledWrapper>
   );
 }

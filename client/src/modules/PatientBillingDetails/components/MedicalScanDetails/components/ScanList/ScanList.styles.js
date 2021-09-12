@@ -23,6 +23,7 @@ export const StyledWrapper = styled.div`
   }
 
   .error-msg {
+    margin: 0;
     margin-left: 10px;
   }
 `;
