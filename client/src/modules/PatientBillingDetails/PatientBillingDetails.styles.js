@@ -4,6 +4,13 @@ export const Container = styled.div`
   padding: 20px;
   min-height: calc(100vh - 40px);
   background: #ebeef0;
+  display: flex;
+  flex-direction: column;
+
+  .saveBtn, .error-msg  {
+    margin-top: 20px;
+    align-self: center;
+  }
 `;
 
 export const StyledHeader = styled.h5`
