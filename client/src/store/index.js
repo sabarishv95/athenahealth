@@ -5,11 +5,13 @@ import thunk from "redux-thunk";
 import { createHashHistory as createHistory } from "history";
 import { createLogger } from "redux-logger";
 import { apiMiddleware } from "redux-api-middleware";
-import paymentBillingDetails from "../modules/PatientBillingDetails/store/reducers/index";
+import paymentBillingDetails from "../modules/PatientBillingDetails/store/reducers";
+import paymentTransactions from "../modules/PatientBillingTransactions/store/reducers";
 
 function createReducer() {
   return combineReducers({
     paymentBillingDetails,
+    paymentTransactions,
   });
 }
 
