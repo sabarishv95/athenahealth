@@ -42,6 +42,7 @@ function PatientBillingDetails() {
           appointmentDate
           phoneNumber
           address
+          status
           medicalScanDetails {
             _id
             scanName
