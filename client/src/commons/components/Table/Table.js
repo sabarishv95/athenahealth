@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useTable } from "react-table";
 
-function Table({ columns, data }) {
+function Table({ columns, data, onCellClick }) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
     columns,
     data,
   });
+
+  const onClick = useCallback(
+    (e) => {
+      if (onCellClick) onCellClick(e);
+    },
+    [onCellClick]
+  );
 
   return (
     <table {...getTableProps()}>
@@ -24,7 +31,12 @@ function Table({ columns, data }) {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                const cellProps = cell.getCellProps();
+                return (
+                  <td id={cellProps.key} {...cellProps} onClick={onClick}>
+                    {cellProps.key.includes("Action") ? "Click to Pay" : cell.render("Cell")}
+                  </td>
+                );
               })}
             </tr>
           );

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import Table from "../../../../../../commons/components/Table";
 import { Wrapper } from "./AppointmentsList.styles";
+import PaymentTransactionContext from "../../../../context";
 
-function AppointmentsList({ data }) {
+function AppointmentsList() {
+  const { appointments, setAppointment } = useContext(PaymentTransactionContext);
+
   const columns = [
     {
       Header: "Sno",
@@ -29,9 +32,23 @@ function AppointmentsList({ data }) {
     },
   ];
 
+  const data = useMemo(() => appointments, [appointments]);
+
+  const onCellClick = useCallback(
+    (e) => {
+      const target = e.target.id;
+      if (target.includes("Action")) {
+        const index = target.split("_")[1];
+        const appointment = appointments[index];
+        setAppointment(appointment);
+      }
+    },
+    [appointments, setAppointment]
+  );
+
   return (
     <Wrapper>
-      <Table columns={columns} data={data ? data : []} />
+      <Table columns={columns} data={data} onCellClick={onCellClick} />
     </Wrapper>
   );
 }
