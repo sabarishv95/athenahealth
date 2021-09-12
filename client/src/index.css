@@ -18,3 +18,27 @@ code {
   pointer-events: none;
   opacity: 0.5;
 }
+
+.flex {
+  display: flex;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-self-center {
+  justify-self: center;
+}
+
+.align-self-center {
+  align-self: center;
+}
