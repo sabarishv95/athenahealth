@@ -1,12 +1,15 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import AddDiscount from "./components/AddDiscount";
 import ScanAmount from "./components/ScanAmount";
 import SearchBilling from "./components/SearchBilling";
-import { getAmount, validateDiscount } from "./helpers";
+import { getAmount, validateDiscount, getMedicalBilling } from "./helpers";
 import { StyledWrapper } from "./ScanList.styles";
 import Button from "../../../../../../commons/components/form/Button";
+import PaymentDetailsContext from "../../../../context";
 
 function ScanList() {
+  const { paymentDetails, updatePaymentBillingDetailsKey } = useContext(PaymentDetailsContext);
+
   const [medicalBilling, updateMedicalBilling] = useState("");
   const [discount, updateDiscount] = useState(null);
   const [isValid, updateIsValid] = useState(null);
@@ -14,8 +17,22 @@ function ScanList() {
   const amount = getAmount(medicalBilling);
 
   const onAddClick = useCallback(() => {
-    updateIsValid(validateDiscount(medicalBilling, Number(discount)));
-  }, [updateIsValid, discount, medicalBilling]);
+    const valid = validateDiscount(medicalBilling, Number(discount));
+    if (valid) {
+      const medicalScanDetails = paymentDetails.medicalScanDetails;
+      const billing = getMedicalBilling(medicalBilling);
+      medicalScanDetails.push({
+        Sno: medicalScanDetails.length + 1,
+        scanName: medicalBilling,
+        scanAmount: billing.scanAmount,
+        discount: Number(discount),
+        totalAmount: billing.scanAmount - Number(discount),
+      });
+      updatePaymentBillingDetailsKey("medicalScanDetails", medicalScanDetails);
+      updateMedicalBilling("")
+    }
+    updateIsValid(valid);
+  }, [updateIsValid, discount, medicalBilling, updatePaymentBillingDetailsKey, paymentDetails.medicalScanDetails]);
 
   return (
     <StyledWrapper>

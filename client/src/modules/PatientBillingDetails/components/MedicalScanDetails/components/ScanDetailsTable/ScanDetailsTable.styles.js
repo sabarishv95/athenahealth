@@ -14,6 +14,15 @@ export const Wrapper = styled.div`
     color: white;
   }
 
+  tbody tr {
+    height: 50px;
+    background: #fff;
+
+    td {
+      text-align: center;
+    }
+  }
+
   td,
   th {
     border: 1px solid #ddd;
