@@ -39,7 +39,7 @@ const appointmentsSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: "Not Paid"
+    default: "Not Yet Billed"
   },
   medicalScanDetails: [
     {

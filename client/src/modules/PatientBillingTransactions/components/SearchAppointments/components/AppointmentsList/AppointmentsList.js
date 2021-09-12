@@ -3,34 +3,31 @@ import Table from "../../../../../../commons/components/Table";
 import { Wrapper } from "./AppointmentsList.styles";
 
 function AppointmentsList({ data }) {
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Sno",
-        accessor: "Sno",
-      },
-      {
-        Header: "Patient Name",
-        accessor: "patientName",
-      },
-      {
-        Header: "Age-Gender",
-        accessor: "ageGender",
-      },
-      {
-        Header: "AppointmentDate",
-        accessor: "appointmentDate",
-      },
-      {
-        Header: "Balance Amount",
-        accessor: "balanceAmount",
-      },
-      {
-        Header: "Action",
-      },
-    ],
-    []
-  );
+  const columns = [
+    {
+      Header: "Sno",
+      accessor: "Sno",
+    },
+    {
+      Header: "Patient Name",
+      accessor: "patientName",
+    },
+    {
+      Header: "Age-Gender",
+      accessor: "ageGender",
+    },
+    {
+      Header: "AppointmentDate",
+      accessor: "appointmentDate",
+    },
+    {
+      Header: "Balance Amount",
+      accessor: "balanceAmount",
+    },
+    {
+      Header: "Action",
+    },
+  ];
 
   return (
     <Wrapper>

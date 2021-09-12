@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
   margin-right: 20px;
 
   .payment-status {
-    height: 32px;
+    min-height: 32px;
     width: 150px;
     & > div {
       min-height: 32px;
       & > div {
-        height: 28px;
+        min-height: 28px;
       }
     }
   }

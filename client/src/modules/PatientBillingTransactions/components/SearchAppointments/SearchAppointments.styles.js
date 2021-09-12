@@ -7,15 +7,20 @@ export const StyledWrapper = styled.div`
   flex-flow: wrap;
 
   .date-wrapper {
-    height: 32px;
+    height: 36px;
     margin-right: 20px;
     & .form-control {
-      height: 28px;
+      height: 34px;
     }
   }
 
   #commonSearch {
+    &:focus {
       border-radius: 20px;
+      outline: none;
+      border: 2px solid #2260c5;
+    }
+    border-radius: 20px;
   }
   .searchBtn {
     margin-left: 10px;
