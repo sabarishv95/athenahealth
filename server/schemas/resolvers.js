@@ -9,7 +9,6 @@ module.exports = {
     const scanIds = [];
     return new Promise((resolve) => {
       appointment.medicalScanDetails.forEach((scan, index) => {
-        delete scan.Sno;
         Scans.create(scan)
           .then((response) => {
             scanIds.push(response._id);
@@ -22,7 +21,6 @@ module.exports = {
           });
       });
     }).then(async (res) => {
-      delete appointment.medicalScanDetails;
       appointment = {
         ...appointment,
         medicalScanDetails: scanIds,
@@ -35,6 +33,7 @@ module.exports = {
       return createdAppointment;
     });
   },
+
   searchAppointments: function (data) {
     const query = {};
     const { fromDate, toDate, status, patientName } = data;
