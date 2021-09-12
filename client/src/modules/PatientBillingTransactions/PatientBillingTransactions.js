@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import SearchAppointments from "./components/SearchAppointments/SearchAppointments";
 import { StyledHeader, Container } from "./PatientBillingTransactions.styles";
-import PaymentTransactionContext from "./context";
+import PaymentTransactionsContext from "./context";
 import { isEmpty } from "lodash";
 import TransactionDetails from "./components/TransactionDetails";
 
 function PatientBillingTransactions() {
-  const { appointment } = useContext(PaymentTransactionContext);
+  const { appointment } = useContext(PaymentTransactionsContext);
 
   return (
     <Container>

@@ -1,10 +1,10 @@
 import React, { useCallback, useContext, useMemo } from "react";
 import Table from "../../../../../../commons/components/Table";
 import { Wrapper } from "./AppointmentsList.styles";
-import PaymentTransactionContext from "../../../../context";
+import PaymentTransactionsContext from "../../../../context";
 
 function AppointmentsList() {
-  const { appointments, setAppointment } = useContext(PaymentTransactionContext);
+  const { appointments, setAppointment } = useContext(PaymentTransactionsContext);
 
   const columns = [
     {
