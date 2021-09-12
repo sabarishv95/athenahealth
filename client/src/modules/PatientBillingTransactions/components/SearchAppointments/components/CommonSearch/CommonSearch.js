@@ -3,7 +3,7 @@ import Button from "../../../../../../commons/components/form/Button";
 import Input from "../../../../../../commons/components/form/Input";
 import Label from "../../../../../../commons/components/form/Label";
 
-function CommonSearch({ state, updateState }) {
+function CommonSearch({ state, updateState, onSearch }) {
   const onChange = useCallback(
     (e) => {
       updateState((prevState) => {
@@ -27,7 +27,7 @@ function CommonSearch({ state, updateState }) {
         onChange={onChange}
         value={state.patientName || ""}
       />
-      <Button className="searchBtn" label="Search" height="38" width="80" />
+      <Button className="searchBtn" label="Search" height="38" width="80" onClick={onSearch} />
     </div>
   );
 }

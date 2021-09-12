@@ -16,6 +16,7 @@ const appointmentsSchema = `
         address: String
         status: String,
         medicalScanDetails: [ScanInput]
+        transactions: [TransactionInput]
     }
 
     type Appointment {
@@ -31,6 +32,7 @@ const appointmentsSchema = `
         address: String
         status: String
         medicalScanDetails: [Scan]
+        transactions: [Transaction]
     }
 `;
 
