@@ -35,6 +35,7 @@ function SearchAppointments() {
           totalAmount
         }
         transactions{
+          _id
           date
           paidAmount
           paymentMode

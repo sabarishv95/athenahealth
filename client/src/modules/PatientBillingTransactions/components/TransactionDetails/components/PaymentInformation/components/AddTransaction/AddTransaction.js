@@ -25,6 +25,7 @@ function AddTransaction({ minAmountToPay }) {
         <PaymentActions
           updateIsValid={updateIsValid}
           payableAmount={payableAmount}
+          paymentMode={paymentMode}
           minAmountToPay={minAmountToPay}
         />
       </div>
