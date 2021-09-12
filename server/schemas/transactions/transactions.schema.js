@@ -1,6 +1,6 @@
 const transactionsSchema = `
     type Transaction {
-        id: ID!
+        _id: ID!
         date: Date
         paidAmount: Int
         paymentMode: String

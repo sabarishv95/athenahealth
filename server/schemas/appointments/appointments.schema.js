@@ -1,5 +1,8 @@
+require("json-bigint-patch");
+
 const appointmentsSchema = `
     scalar Date
+    scalar BigInt
 
     input AppointmentInput {
         salutation: String
@@ -9,13 +12,13 @@ const appointmentsSchema = `
         age: Int
         ageType: String
         appointmentDate: Date
-        phoneNumber: Int
+        phoneNumber: BigInt
         address: String
         medicalScanDetails: [ScanInput]
     }
 
     type Appointment {
-        id: ID!
+        _id: ID!
         salutation: String
         patientName: String
         gender: String
@@ -23,7 +26,7 @@ const appointmentsSchema = `
         age: Int
         ageType: String
         appointmentDate: Date
-        phoneNumber: Int
+        phoneNumber: BigInt
         address: String
         medicalScanDetails: [Scan]
     }

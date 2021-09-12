@@ -7,7 +7,7 @@ const scansSchema = `
     }
 
     type Scan {
-        id: ID!
+        _id: ID!
         scanName: String
         scanAmount: Int
         discount: Int
