@@ -25,6 +25,7 @@ function SearchBilling({ medicalBilling, onStateChange }) {
           : ""
       }
       onChange={onChange}
+      isSearchable={true}
     />
   );
 }

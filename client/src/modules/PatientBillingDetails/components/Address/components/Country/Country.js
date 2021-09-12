@@ -25,6 +25,7 @@ function Country({ updateAddress }) {
         paymentDetails.address.country ? COUNTRY.find((obj) => obj.label === paymentDetails.address.country) : ""
       }
       onChange={onCountryChange}
+      isSearchable={false}
     />
   );
 }

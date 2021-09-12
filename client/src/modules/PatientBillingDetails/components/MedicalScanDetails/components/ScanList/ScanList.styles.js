@@ -13,4 +13,8 @@ export const StyledWrapper = styled.div`
     width: 250px;
     margin-right: 20px;
   }
+
+  & > p {
+    min-width: 150px;
+  }
 `;

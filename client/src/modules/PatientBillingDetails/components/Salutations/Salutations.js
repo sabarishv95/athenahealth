@@ -32,6 +32,7 @@ function Salutations() {
             : ""
         }
         onChange={onSalutationsChange}
+        isSearchable={false}
       />
     </Wrapper>
   );

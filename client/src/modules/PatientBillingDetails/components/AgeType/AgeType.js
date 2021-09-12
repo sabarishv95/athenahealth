@@ -25,11 +25,10 @@ function AgeType() {
         getOptionLabel={(option) => `${option.label}`}
         getOptionValue={(option) => `${option.id}`}
         value={
-          paymentDetails.ageType
-            ? AGE_TYPE.find((obj) => obj.label === paymentDetails.ageType)
-            : ""
+          paymentDetails.ageType ? AGE_TYPE.find((obj) => obj.label === paymentDetails.ageType) : ""
         }
         onChange={onAgeTypeChange}
+        isSearchable={false}
       />
     </Wrapper>
   );
