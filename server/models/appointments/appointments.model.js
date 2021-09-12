@@ -37,6 +37,10 @@ const appointmentsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    default: "Not Paid"
+  },
   medicalScanDetails: [
     {
       type: mongoose.Schema.Types.ObjectId,
