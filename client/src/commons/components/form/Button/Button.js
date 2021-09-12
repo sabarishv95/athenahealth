@@ -1,7 +1,17 @@
 import React from "react";
 import { StyledButton } from "./Button.styles";
 
-function Button({ width, height, borderColor, background, color, className, label, onClick }) {
+function Button({
+  width,
+  height,
+  borderColor,
+  background,
+  color,
+  className,
+  label,
+  onClick,
+  disabled,
+}) {
   return (
     <StyledButton
       width={width}
@@ -11,6 +21,7 @@ function Button({ width, height, borderColor, background, color, className, labe
       color={color}
       className={className ? className : ""}
       onClick={onClick}
+      disabled={disabled}
     >
       {label}
     </StyledButton>

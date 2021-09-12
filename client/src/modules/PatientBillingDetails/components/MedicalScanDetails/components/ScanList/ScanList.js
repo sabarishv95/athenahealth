@@ -14,7 +14,7 @@ function ScanList() {
   const amount = getAmount(medicalBilling);
 
   const onAddClick = useCallback(() => {
-    updateIsValid(validateDiscount(medicalBilling, discount));
+    updateIsValid(validateDiscount(medicalBilling, Number(discount)));
   }, [updateIsValid, discount, medicalBilling]);
 
   return (
@@ -30,7 +30,14 @@ function ScanList() {
         onStateChange={updateDiscount}
         updateIsValid={updateIsValid}
       />
-      <Button className="addBtn" label="Add" height="38" width="80" onClick={onAddClick} />
+      <Button
+        className={`${!medicalBilling ? "disabled" : ""} addBtn`}
+        label="Add"
+        height="38"
+        width="80"
+        onClick={onAddClick}
+        disabled={!medicalBilling}
+      />
       {isValid === false && <p className="error-msg">Discount Exceeds max discount</p>}
     </StyledWrapper>
   );
