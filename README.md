@@ -2,7 +2,7 @@
 
 Mongodb should be running in port 27017.
 
-To run client: 
+# To run client: 
 
 cd client
 
@@ -11,7 +11,7 @@ yarn
 yarn start
 
 
-To run server:
+# To run server:
 
 cd server
 
